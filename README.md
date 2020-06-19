@@ -2,7 +2,9 @@
 
 This is a Python implementation of general fused lasso (GFLasso) based on the following paper,
 ```
-Chen, Xi, et al. "Graph-structured multi-task regression and an efficient optimization method for general fused lasso." arXiv preprint arXiv:1005.3579 (2010).
+Chen, Xi, et al. 
+"Graph-structured multi-task regression and an efficient optimization method for general fused lasso." 
+arXiv preprint arXiv:1005.3579 (2010).
 ```
 
 ## Installation
