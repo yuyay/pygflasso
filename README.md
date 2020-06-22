@@ -1,6 +1,6 @@
 # Unofficial Python Implementation of GFLasso
 
-This is a Python implementation of general fused lasso (GFLasso) based on the following paper,
+This is a Python implementation of graph-guided fused lasso (GFLasso) based on the following paper,
 ```
 Chen, Xi, et al. "Graph-structured multi-task regression and an efficient optimization method for general fused lasso." arXiv preprint arXiv:1005.3579 (2010).
 ```
@@ -18,4 +18,5 @@ pip install -e .
 See [example.ipynb](./example.ipynb).
 
 ## Bug?
-- Estimated weights are not be sparse.
+- ~~Estimated weights are not be sparse.~~
+    - Added soft thresholding operator

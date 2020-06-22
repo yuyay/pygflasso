@@ -4,7 +4,7 @@ from sklearn.base import RegressorMixin, BaseEstimator
 
 class MultiTaskGFLasso(RegressorMixin, BaseEstimator):
     """
-    General Fused Lasso
+    Graph-Guided Fused Lasso
     """
 
     def __init__(
@@ -55,7 +55,7 @@ class MultiTaskGFLasso(RegressorMixin, BaseEstimator):
             fb = np.dot(X.T, (np.dot(X, W_prev) - y)) + np.dot(A, C.T)
 
             # Gradient descent step
-            B = W_prev - fb / Lu
+            B = _soft_threshold(W_prev - fb / Lu, self.lamb / Lu)
             
             # Set Z
             Z = Z_prev - 0.5 * (t + 1) * fb / Lu 
@@ -105,3 +105,9 @@ def _shrinkage_operator(array):
     array = np.where(array <= -1., -1., array)  # if x <= -1
     return array
 
+
+def _soft_threshold(array, lamb):
+    array_new = np.zeros_like(array)
+    array_new[np.where(array > lamb)] = array[np.where(array > lamb)] - lamb
+    array_new[np.where(array < -lamb)] = array[np.where(array < -lamb)] + lamb
+    return array_new
