@@ -6,7 +6,6 @@ class MultiTaskGFLasso(RegressorMixin, BaseEstimator):
     """
     Graph-Guided Fused Lasso
     """
-
     def __init__(
         self, G, max_iter=50, lamb=1.0, gamma=1.0, eps=1.0, tol=10**-4,
         nobias=False, verbose=False, 
@@ -20,7 +19,7 @@ class MultiTaskGFLasso(RegressorMixin, BaseEstimator):
         self.nobias = nobias
         self.verbose = verbose
 
-    def fit(self, X, y, sample_weight=None):
+    def fit(self, X, y):
         if not self.nobias:
             X = self._add_bias(X)
         n, d = X.shape
